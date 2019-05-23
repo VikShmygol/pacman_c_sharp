@@ -1,0 +1,7 @@
+E:\#projects\pacman_c_sharp\pacman_c_sharp\obj\Debug\pacman_c_sharp.csprojAssemblyReference.cache
+E:\#projects\pacman_c_sharp\pacman_c_sharp\obj\Debug\pacman_c_sharp.csproj.CoreCompileInputs.cache
+E:\#projects\pacman_c_sharp\pacman_c_sharp\bin\Debug\pacman_c_sharp.exe.config
+E:\#projects\pacman_c_sharp\pacman_c_sharp\bin\Debug\pacman_c_sharp.exe
+E:\#projects\pacman_c_sharp\pacman_c_sharp\bin\Debug\pacman_c_sharp.pdb
+E:\#projects\pacman_c_sharp\pacman_c_sharp\obj\Debug\pacman_c_sharp.exe
+E:\#projects\pacman_c_sharp\pacman_c_sharp\obj\Debug\pacman_c_sharp.pdb
