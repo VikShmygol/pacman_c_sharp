@@ -21,9 +21,7 @@ namespace pacman_c_sharp
         public List<Ghost> ghosts = new List<Ghost>();
 
         public List<Pacman> pacman = new List<Pacman>();
-
-        private bool firstCycle = true;
-
+               
         private int MapHeight { set; get; }
 
         private int MapWidth { set; get; }
@@ -59,7 +57,7 @@ namespace pacman_c_sharp
         private void ScreenUpdate(ref List<string> map, int height, int width)
         {
             Console.CursorVisible = false;
-            Console.SetWindowSize(MapWidth , MapHeight + 2);
+            Console.SetWindowSize(MapWidth , MapHeight + 3);
             for (int i = 0; i < height; ++i)
             {
                 for (int j = 0; j < width; ++j)
@@ -77,36 +75,82 @@ namespace pacman_c_sharp
             ghosts.Clear();
             pacman.Clear();
 
-            var lines = File.ReadAllLines(levelFilename);
-            var firstRow = lines[0].Split();
-           
-            MapHeight = int.Parse(firstRow[0]);
-            MapWidth = int.Parse(firstRow[1]);
+            string[] lines = null;
+            string[] firstRow = null;
+
+            try
+            { 
+                lines = File.ReadAllLines(levelFilename);
+                firstRow = lines[0].Split();
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine("Map file " + e.FileName + " not found");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                throw e;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error while opening and reading map file: " + e.Message);
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                throw e;
+            }
+
+            try
+            {
+                MapHeight = int.Parse(firstRow[0]);
+                MapWidth = int.Parse(firstRow[1]);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error while parsing first line of a map file: " + e.Message);
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                throw e;
+            }
+          
 
             for (var i = 1; i < lines.Length; ++i)
             {
                 map.Add(lines[i]);
             }
 
-            for (int i = 0; i < MapHeight; ++i)
+            try
             {
-                for (int j = 0; j < MapWidth; ++j)
+                for (int i = 0; i < MapHeight; ++i)
                 {
-                    switch (map[i][j])
+                    for (int j = 0; j < MapWidth; ++j)
                     {
-                        case Common.SuperDotLook:
-                        case Common.RegularDotLook:
-                            NumDots++;
-                            break;
-                        case Common.GhostLook:
-                            ghosts.Add(new Ghost(i, j));
-                            break;
-                        case '>':
-                            pacman.Add(new Pacman(i, j));
-                            break;
+                        switch (map[i][j])
+                        {
+                            case Common.SuperDotLook:
+                            case Common.RegularDotLook:
+                                NumDots++;
+                                break;
+                            case Common.GhostLook:
+                                ghosts.Add(new Ghost(i, j));
+                                break;
+                            case '>':
+                                pacman.Add(new Pacman(i, j));
+                                break;
 
+                        }
                     }
                 }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error while parsing map: " + e.Message);
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                throw e;
+            }
+
+            if (pacman.Count < 1 || pacman.Count > 1)
+            {
+                throw new ArgumentOutOfRangeException("Quantity of Pacman's characters is out of range");
             }
         }
 

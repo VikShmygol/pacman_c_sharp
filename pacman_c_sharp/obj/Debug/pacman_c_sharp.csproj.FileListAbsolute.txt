@@ -5,3 +5,5 @@ E:\#projects\pacman_c_sharp\pacman_c_sharp\bin\Debug\pacman_c_sharp.exe
 E:\#projects\pacman_c_sharp\pacman_c_sharp\bin\Debug\pacman_c_sharp.pdb
 E:\#projects\pacman_c_sharp\pacman_c_sharp\obj\Debug\pacman_c_sharp.exe
 E:\#projects\pacman_c_sharp\pacman_c_sharp\obj\Debug\pacman_c_sharp.pdb
+E:\#projects\pacman_c_sharp\pacman_c_sharp\bin\Debug\Level_2.txt
+E:\#projects\pacman_c_sharp\pacman_c_sharp\bin\Debug\Level_1.txt
