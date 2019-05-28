@@ -17,10 +17,16 @@ namespace pacman_c_sharp
         public const char RegularDotLook = '∙';
         public const char SuperDotLook = '0';
 
-        //Method to change a string in a map of level
+        //Method returns modified string
         public static string StringChanger(string stringToChange, int charIndex, char newCharacter)
         {
             StringBuilder sb = new StringBuilder(stringToChange);
+
+            if (charIndex < 0 || charIndex > (sb.Length - 1))
+            {
+                throw new ArgumentOutOfRangeException("Wrong index value while running StringChanger: index was " + charIndex);
+            }
+           
             sb[charIndex] = newCharacter;
             return sb.ToString();
         }

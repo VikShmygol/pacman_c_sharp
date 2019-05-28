@@ -148,7 +148,7 @@ namespace pacman_c_sharp
                 throw e;
             }
 
-            if (pacman.Count < 1 || pacman.Count > 1)
+            if (pacman.Count != 1)
             {
                 throw new ArgumentOutOfRangeException("Quantity of Pacman's characters is out of range");
             }

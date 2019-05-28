@@ -28,6 +28,12 @@ namespace pacman_c_sharp
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
             }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+            }
             catch {}
             
         }

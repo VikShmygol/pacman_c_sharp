@@ -49,14 +49,22 @@ namespace pacman_c_sharp
         
         private int FindGhost(int row, int col, ref List<Ghost> ghosts)
         {
-            int i;
-            for (i = 0; i < ghosts.Count; )
+            int index = -1;
+            for (int i = 0; i < ghosts.Count; ++i)
             {
                 if (ghosts[i].LocationRow == row && ghosts[i].LocationCol == col)
-                { break; }
-                ++i;
+                {
+                    index = i;
+                    break;
+                }
+                
             }
-            return i;
+
+            if (index == -1)
+            {
+                throw new ArgumentException($"Ghost with given location parameters was not found: location row = {row}, location column = {col}");
+            }
+            return index;
         }
 
         private void HandleGhostPacmanCase(GameSys game, ref List<Ghost> ghosts, 
